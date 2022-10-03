@@ -1,0 +1,79 @@
+.admin_navbar , .right
+{
+    background: #5b717a !important;
+}
+
+.bg-info {
+    background-color: #5b717a!important;
+}
+
+.alert-danger{
+    border: none !important;
+    background-color:#ff5f75ba !important;
+    color: white!important;
+    text-align: center;
+}
+
+table tr th {
+    background-color: #5b717a !important;
+}
+
+table thead {
+    border: 2px solid #5b717a;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-color: #ddd;
+}
+
+
+.div-table {
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    margin: 0 !important;
+}
+
+.btn-search , .btn-primary , .btn-info {
+    background-color: #5b717a !important;
+    border-color: #5b717a !important;
+}
+
+.btn-search:hover , .btn-primary:hover ,
+.btn-info:hover {
+    background-color: #64777f !important;
+    border-color: #64777f !important;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus ,
+.btn-info:focus, .btn-info:active {
+    background-color: #64777f !important;
+    border-color: #64777f !important;
+}
+
+.login-btn, .create-btn, .register-btn, .reset-btn {
+    background-color: #5b717a;
+    border-color: #5b717a;
+}
+
+.login-btn:hover, .create-btn:hover, .register-btn:hover, .reset-btn:hover {
+    background-color: #64777f;
+    border-color: #64777f;
+}
+
+.dropdown-link {
+    color: #5b717a !important;
+}
+
+.dropdown-link::selection {
+    color: white !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #e9ecef;
+}
+
+.bg-white {
+    background-color: #5b717a !important;
+}

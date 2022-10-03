@@ -1,0 +1,106 @@
+table tr th{
+    color: white;
+    padding: 8px 15px !important;
+}
+table tr td:nth-child(odd){
+     background-color: #eee;
+}
+
+.div-search{
+    margin: auto;
+    max-width: 80%;
+}
+
+
+.div-table{
+    overflow: auto;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+}
+
+
+.input-search{
+    width: 80% !important;
+    display: inline-block !important;
+}
+
+.mb-2{
+    margin-bottom: 1.3rem !important;
+}
+
+.btn-search{
+    height: 30px;
+    line-height: 1px !important;
+}
+
+
+/*************** Start table ***************/
+
+
+
+@media (max-width: 992px){
+
+    .input-search{
+        padding: 7px 10px !important;
+    }
+    .btn-search, .btn-search:hover{
+        height: 34px;
+    }
+
+}
+
+
+    @media (min-width: 768px) and (max-width: 991px) {
+     table th{
+         font-size: 14px;
+     }
+
+}
+
+
+@media (max-width: 830px) {
+    .div-search{
+        max-width: 90%;
+    }
+
+}
+
+@media (max-width: 767px){
+    table th{
+        font-size: 12px;
+    }
+    table th , td{
+        width: 16.66% !important;
+    }
+    .actions{
+        width: 16.66% !important;
+    }
+    .actions a , #delete-user-form button{
+        width: 100px;
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+    .input-search{
+        padding: 5px 10px !important;
+    }
+    .btn-search, .btn-search:hover{
+        height: 30px;
+    }
+
+}
+
+
+
+
+@media (max-width: 400px){
+    .input-search {
+        width: 70% !important;
+    }
+
+    .my-container .form-control{
+        width: 80% !important;
+    }
+
+}
+
+/*************** End table ***************/

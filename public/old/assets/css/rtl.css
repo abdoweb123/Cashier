@@ -1,0 +1,33 @@
+*{
+    direction: rtl;
+}
+.header{
+    padding: 0 ;
+}
+.header .header-left{
+    float: right;
+}
+#toggle_btn{
+    float: right;
+}
+.user-menu{
+    float: left;
+    direction: ltr;
+}
+.sidebar{
+    right: 0;
+}
+.page-wrapper{
+    margin-right: 265px;
+    margin-left: 0;
+}
+
+@media only screen and (min-width: 992px) {
+    .mini-sidebar .page-wrapper {
+        margin-right: 78px;
+    }
+
+
+}
+
+
