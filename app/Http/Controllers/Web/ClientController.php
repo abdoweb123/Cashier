@@ -1,35 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Traits\CheckApi;
 use App\Http\Requests\ClientRequest;
-use App\Http\Resources\ClientResource;
-use App\Http\Resources\SellResource;
-use App\Interfaces\Api\ClientRepositoryInterface;
+use App\Interfaces\Web\ClientRepositoryInterface;
 use App\Models\Client;
-use App\Models\clientInvoice;
-use App\Models\Sell;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
+
 
 class ClientController extends Controller
 {
-    use CheckApi;
 
     private $clientRepositoryInterface;
+
 
     public function __construct(ClientRepositoryInterface $clientRepositoryInterface)
     {
         $this->clientRepositoryInterface = $clientRepositoryInterface;
     }
 
+
     public function index(Request $request)
     {
-        return $this->clientRepositoryInterface->index($request);
+       return $this->clientRepositoryInterface->index($request);
     }
 
+
+    public function create()
+    {
+        return $this->clientRepositoryInterface->create();
+    }
 
 
     public function store(ClientRequest $request)
@@ -38,12 +39,16 @@ class ClientController extends Controller
     }
 
 
-
-    public function update(ClientRequest $request, $id)
+    public function edit(Client $client)
     {
-        return $this->clientRepositoryInterface->update($request,$id);
+        return $this->clientRepositoryInterface->edit($client);
     }
 
+
+    public function update(ClientRequest $request, Client $client)
+    {
+        return $this->clientRepositoryInterface->update($request,$client);
+    }
 
 
     public function softDelete($id)
@@ -52,26 +57,22 @@ class ClientController extends Controller
     }
 
 
-
-    public function backFromTrash($id)
-    {
-        return $this->clientRepositoryInterface->backFromTrash($id);
-    }
-
-
-
     public function trashed()
     {
         return $this->clientRepositoryInterface->trashed();
     }
 
 
+    public function backFromSoftDelete($id)
+    {
+        return $this->clientRepositoryInterface->backFromSoftDelete($id);
+    }
+
 
     public function deleteForever($id)
     {
         return $this->clientRepositoryInterface->deleteForever($id);
     }
-
 
 
     public function showProductsOfClient(Request $request, $id)
@@ -81,5 +82,4 @@ class ClientController extends Controller
 
 
 
-
-} //end of class
+}

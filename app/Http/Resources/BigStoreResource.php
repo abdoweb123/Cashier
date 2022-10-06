@@ -13,6 +13,7 @@ class BigStoreResource extends JsonResource
 
             "id"=>$this->id,
             "supplier_id"=>$this->supplier_id,
+            "category_id"=>$this->category_id,
             "supplier_name"=>$this->supplier->name,
             "product_name"=>$this->product_name,
             "file_name"=>asset('images/offers/' . $this->file_name),

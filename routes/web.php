@@ -1,22 +1,22 @@
 <?php
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\testController;
-use App\Http\Controllers\web\AdminController;
-use App\Http\Controllers\web\CategoryController;
-use App\Http\Controllers\web\StoreController;
-use App\Http\Controllers\web\ClientInvoiceController;
-use App\Http\Controllers\web\BigStoreController;
+use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\CategoryController;
+use App\Http\Controllers\Web\StoreController;
+use App\Http\Controllers\Web\ClientInvoiceController;
+use App\Http\Controllers\Web\BigStoreController;
+use App\Http\Controllers\Web\testController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\web\ProductController;
-use App\Http\Controllers\web\SafeController;
-use App\Http\Controllers\web\ExpensesController;
-use App\Http\Controllers\web\UserController;
-use App\Http\Controllers\web\ClientController;
-use App\Http\Controllers\web\SellController;
-use App\Http\Controllers\web\SupplierController;
-use App\Http\Controllers\web\InvoiceController;
+use App\Http\Controllers\Web\ProductController;
+use App\Http\Controllers\Web\SafeController;
+use App\Http\Controllers\Web\ExpensesController;
+use App\Http\Controllers\Web\UserController;
+use App\Http\Controllers\Web\ClientController;
+use App\Http\Controllers\Web\SellController;
+use App\Http\Controllers\Web\SupplierController;
+use App\Http\Controllers\Web\InvoiceController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -51,7 +51,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // Admin
-    Route::group(['namespace' => 'web'], function () {
+    Route::group(['namespace' => 'Web'], function () {
 
         Route::get('register/admin/view', [AdminController::class, 'registerView'])->name('registerView')->middleware('auth:admin');
         Route::get('login/admin/view', [AdminController::class, 'loginView'])->name('loginView');
@@ -64,7 +64,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ======================  products for user ======================
-    Route::group(['namespace' => 'web'], function () {
+    Route::group(['namespace' => 'Web'], function () {
 
         Route::resource('products', 'ProductController');
         Route::get('products/soft/delete/{id}', [ProductController::class, 'softDelete'])->name('soft.delete');
@@ -75,7 +75,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
     });
 
 // ======================  products for admin ======================
-    Route::group(['prefix' => 'productForAdmin', 'namespace' => 'web', 'middleware' => 'auth:admin'], function () {
+    Route::group(['prefix' => 'productForAdmin', 'namespace' => 'Web', 'middleware' => 'auth:admin'], function () {
 
         Route::resource('/product_ForAdmin', 'BigStoreController');
         Route::get('/soft/delete/{id}', [BigStoreController::class, 'softDelete'])->name('productForAdmin.soft.delete');
@@ -87,7 +87,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ====================== for users ======================
-    Route::group(['namespace' => 'web'], function () {
+    Route::group(['namespace' => 'Web'], function () {
 
         Route::resource('users', 'UserController');
         Route::get('product/{id}', [UserController::class, 'showProductsOfUser'])->name('showProductsOfUser');
@@ -100,7 +100,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ====================== for Client users ======================
-    Route::group(['namespace' => 'web', 'middleware' => 'auth:admin'], function () {
+    Route::group(['namespace' => 'Web', 'middleware' => 'auth:admin'], function () {
 
         Route::resource('clients', 'ClientController');
         Route::get('client/soft/delete/{id}', [ClientController::class, 'softDelete'])->name('soft.delete.client');
@@ -113,7 +113,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ======================  supplier ======================
-    Route::group(['namespace' => 'web', 'middleware' => 'auth:admin'], function () {
+    Route::group(['namespace' => 'Web', 'middleware' => 'auth:admin'], function () {
 
         Route::resource('suppliers', 'SupplierController');
         Route::get('suppliers/soft/delete/{id}', [SupplierController::class, 'softDelete'])->name('supplier.soft.delete');
@@ -126,14 +126,14 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ======================  Store ======================
-    Route::group(['namespace' => 'web', 'middleware' => 'auth:admin'], function () {
+    Route::group(['namespace' => 'Web', 'middleware' => 'auth:admin'], function () {
         Route::get('index/buy', [StoreController::class, 'index'])->name('index.buy');
         Route::get('delete/buy/{id}', [StoreController::class, 'deleteForever'])->name('delete.buy');
     });
 
 
 // ======================  supplier and invoices ======================
-    Route::group(['prefix' => 'invoice', 'namespace' => 'web'], function () {
+    Route::group(['prefix' => 'invoice', 'namespace' => 'Web'], function () {
 
         Route::post('pay/money/for/supplier/{id}', [InvoiceController::class, 'payMoneyToSupplier'])->name('pay.money.for.supplier');
         Route::get('edit/invoice/{invoice}', [InvoiceController::class, 'edit'])->name('edit.invoice');
@@ -145,7 +145,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ======================  sells for Client user ======================
-    Route::group(['namespace' => 'web'], function () {
+    Route::group(['namespace' => 'Web'], function () {
 
         Route::resource('sells', 'SellController');
         Route::get('search/product', [SellController::class, 'searchProduct'])->name('search.product');
@@ -164,7 +164,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
     });
 
 // ======================  Client and invoices ======================
-    Route::group(['prefix' => 'clientInvoice', 'namespace' => 'web'], function () {
+    Route::group(['prefix' => 'clientInvoice', 'namespace' => 'Web'], function () {
         Route::post('get/money/from/client', [ClientInvoiceController::class, 'getMoneyFromClient'])->name('get.money.from.client');
         Route::get('edit/invoice/client/{clientInvoice}', [ClientInvoiceController::class, 'edit'])->name('edit.invoice.client');
         Route::put('update/invoice/client/{clientInvoice}', [ClientInvoiceController::class, 'update'])->name('update.invoice.client');
@@ -175,7 +175,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ======================  Expenses ======================
-    Route::group(['prefix' => 'Expenses', 'namespace' => 'web'], function () {
+    Route::group(['prefix' => 'Expenses', 'namespace' => 'Web'], function () {
 
         Route::resource('expenses', 'ExpensesController');
         Route::get('expense/forceDelete/{expense}', [ExpensesController::class, 'forceDelete'])->name('expense.forceDelete');
@@ -184,7 +184,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ======================  Safe ======================
-    Route::group(['prefix' => 'Safe', 'namespace' => 'web'], function () {
+    Route::group(['prefix' => 'Safe', 'namespace' => 'Web'], function () {
 
         Route::resource('safe', 'SafeController');
         Route::get('delete/added/forever/{safe}', [SafeController::class, 'forceDelete'])->name('safe.forceDelete');
@@ -200,7 +200,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
 
 
 // ======================  Category ======================
-    Route::group(['prefix' => 'Category', 'middleware' => 'auth:admin', 'namespace' => 'web'], function () {
+    Route::group(['prefix' => 'Category', 'middleware' => 'auth:admin', 'namespace' => 'Web'], function () {
 
         Route::resource('category', 'CategoryController');
         Route::get('category/delete/forever/{id}', [CategoryController::class, 'forceDelete'] )->name('category.forceDelete');
@@ -208,7 +208,7 @@ Route::group(['prefix'=> LaravelLocalization::setLocale() , 'middleware' => [ 'l
     });
 
 
-    Route::group(['prefix' => 'invoiceTest', 'middleware' => 'auth:admin'], function () {
+    Route::group(['prefix' => 'invoiceTest', 'middleware' => 'auth:admin', 'namespace' => 'Web'], function () {
 
         Route::resource('invoice', 'testController');
         Route::get('invoice/delete/{id}', [testController::class, 'delete'])->name('invoice.delete');

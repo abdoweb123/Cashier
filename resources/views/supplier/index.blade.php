@@ -38,9 +38,10 @@
                                         @foreach($suppliers as $item)
                                             <tr>
                                                 <td>{{ $item->name }}</td>
-                                                <td>{{$item->address}}</td>
-                                                <td>{{$item->phone}}</td>
-                                                <td>{{$item->notes}}</td>
+                                                <td>@if($item->address == null)لا يوجد@else {{$item->address}}@endif</td>
+                                                <td>@if($item->phone == null)لا يوجد@else {{$item->phone}}@endif</td>
+                                                <td>@if($item->notes == null)لا يوجد@else {{$item->notes}}@endif</td>
+
                                                 <td>
                                                     <div class="dropdown show">
                                                         <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
